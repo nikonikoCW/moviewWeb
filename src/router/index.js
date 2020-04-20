@@ -12,26 +12,33 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/login',
+      path: '/',
       name: 'HelloWorld',
       component: HelloWorld
     },
     {
       path: '/shouye',
       name: 'ShouYe',
+      meta: {
+        roles: ['user', 'admin']
+      },
       component: ShouYe
     },
     {
       path: '/user',
       name: 'User',
-      roles: ['user'],
+      meta: {
+        roles: ['user']
+      },
       component: User
     },
     {
       path: '/sider',
       component: Sider,
       name: Sider,
-      roles: ['user', 'admin'],
+      meta: {
+        roles: ['user', 'admin']
+      },
       children: [{
         path: 'main',
         name: 'Main',

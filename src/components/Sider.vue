@@ -67,8 +67,16 @@ export default {
 <style scoped>
 .tac{
   width:200px;
+  height: 100%;
+  background-color: rgb(84, 92, 100);
 }
 .el-col-12{
   width: 100%;
+}
+</style>
+
+<style>
+.el-menu{
+  border-right: solid 0px #e6e6e6;
 }
 </style>

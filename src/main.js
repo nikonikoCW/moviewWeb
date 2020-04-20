@@ -17,6 +17,24 @@ Vue.use(ElementUI)
 
 Vue.config.productionTip = false
 
+router.beforeEach((to, from, next) => {
+  debugger
+  if (to.path === '/' || to.path === '/sider') {
+    next()
+  } else {
+    debugger
+    let roles = store.state.name
+    if (roles) {
+      if (to.meta.roles.includes(roles)) {
+        next()
+      } else {
+        next({path: '/sider'})
+      }
+    } else {
+      next('/')
+    }
+  }
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
