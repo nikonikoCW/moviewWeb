@@ -4,7 +4,7 @@
       <div class="movie-title">
       <span>我是:{{this.$store.state.name}}</span>
       </div>
-      <div style="background:green">
+      <div style="background:green" id="container">
         <video-player class="video-player vjs-custom-skin"
                 ref="videoPlayer"
                 :playsinline="true"
@@ -15,6 +15,8 @@
   </div>
 </template>
 <script>
+import Barrage from 'barrage-ui'
+import example from 'barrage-ui/example.json'
 import { videoPlayer } from 'vue-video-player'
 import 'video.js/dist/video-js.css'
 export default {
@@ -52,6 +54,25 @@ export default {
     player() {
       return this.$refs.videoPlayer.player
     }
+  },
+  mounted() {
+    console.log(example)
+    const barrage = new Barrage({
+      container: document.getElementById('container'),
+      data: example,
+      config: {
+        duration: 20000,
+        defaultColor: '#fff'
+      }
+    })
+    barrage.add({
+      key: 'fctc651a9pm2j20bia8j',
+      time: 1000,
+      text: '这是新增的一条弹幕',
+      fontSize: 24,
+      color: '#0ff'
+    })
+    barrage.play()
   }
 }
 </script>

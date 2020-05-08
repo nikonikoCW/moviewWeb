@@ -19,6 +19,7 @@ export default {
   },
   methods: {
     goToRouter () {
+      debugger
       this.$router.push('/user')
     }
   }
