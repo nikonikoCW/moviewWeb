@@ -14,12 +14,19 @@ export default new Router({
     {
       path: '/',
       name: 'HelloWorld',
-      component: HelloWorld
+      component: HelloWorld,
+      meta: {
+        title: 'HelloWorld',
+        roles: ['user', 'admin'],
+        icon: 'el-icon-info'
+      },
     },
     {
       path: '/shouye',
       name: 'ShouYe',
       meta: {
+        title: 'ShouYe',
+        icon: 'el-icon-info',
         roles: ['user', 'admin']
       },
       component: ShouYe
@@ -28,6 +35,8 @@ export default new Router({
       path: '/user',
       name: 'User',
       meta: {
+        title: 'User',
+        icon: 'el-icon-info',
         roles: ['user']
       },
       component: User
@@ -37,6 +46,8 @@ export default new Router({
       component: Sider,
       name: Sider,
       meta: {
+        title: 'Sider',
+        icon: 'el-icon-info',
         roles: ['user', 'admin']
       },
       children: [{
@@ -44,10 +55,22 @@ export default new Router({
         name: 'Main',
         component: Main,
         meta: {
-          title: '首页',
+          title: 'Main',
           roles: ['user', 'admin'],
           icon: 'el-icon-info'
-        }
+        },
+        children:[
+          {
+            path: 'index3',
+            name: 'Index3',
+            component: Index,
+            meta: {
+              title: 'Index3333',
+              roles: ['user', 'admin'],
+              icon: 'el-icon-info'
+            }
+          }
+        ]
       },
       {
         path: 'index',

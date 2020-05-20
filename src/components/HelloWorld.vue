@@ -19,6 +19,7 @@ export default {
   },
   methods: {
     login () {
+      debugger
       let getUserRole = this.username === 'admin' ? 'admin' : 'user'
       localStorage.setItem('userRole', getUserRole)
       this.$router.push({
@@ -27,6 +28,10 @@ export default {
       this.$store.commit('changeNameWithParam', {
         name: this.username
       })
+      debugger
+      this.$store.commit('setMeun',this.username)
+      debugger
+      console.log(this.$store.state.menuList)
     }
   }
 }

@@ -24,12 +24,20 @@
           </el-submenu>
         </el-menu>
       </el-col>
+      <el-col :span="12">
+        <el-menu background-color="#132347" text-color="#bfcbd9" active-text-color="#ffd04b" router unique-opened>
+            <sidebar-item :menu="menuList" />
+        </el-menu>
+      </el-col>
     </el-row>
     <router-view></router-view>
   </div>
 </template>
 <script>
+import SidebarItem from './SidebarItem'
+import { mapState } from 'vuex'
 export default {
+  components: { SidebarItem },
   name: 'Sider',
   data () {
     return {
@@ -59,7 +67,10 @@ export default {
   mounted () {
     this.meuns = this.routes
     console.log(this.meuns)
-  }
+  },
+  computed: {
+    ...mapState({ menuList: state => state.menuList })
+  },
 }
 </script>
 
