@@ -2,8 +2,10 @@
   <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
     <el-card class="box-card">
       <el-input v-model="username"></el-input>
-      <el-input v-model="password"></el-input>
-      <el-button @click="login">123</el-button>
+      <el-input v-model="password" @keyup.enter.native='login' style="margin-top:15px;"></el-input>
+      <div style="width:100%;display:flex;justify-content:center;margin-top:15px;">
+        <el-button @click="login">Login</el-button>
+      </div>
     </el-card>
   </div>
 </template>
@@ -20,18 +22,20 @@ export default {
   methods: {
     login () {
       debugger
-      let getUserRole = this.username === 'admin' ? 'admin' : 'user'
-      localStorage.setItem('userRole', getUserRole)
-      this.$router.push({
-        path: '/sider'
-      })
-      this.$store.commit('changeNameWithParam', {
-        name: this.username
-      })
-      debugger
-      this.$store.commit('setMeun',this.username)
-      debugger
-      console.log(this.$store.state.menuList)
+      if(this.username=='admin'||this.username=='user'){
+        let getUserRole = this.username === 'admin' ? 'admin' : 'user'
+        localStorage.setItem('userRole', getUserRole)
+        this.$router.push({
+          path: '/sider'
+        })
+        this.$store.commit('changeNameWithParam', {
+          name: this.username
+        })
+        debugger
+        this.$store.commit('setMeun',this.username)
+        debugger
+        console.log(this.$store.state.menuList)
+      }
     }
   }
 }

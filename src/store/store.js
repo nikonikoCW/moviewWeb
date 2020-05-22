@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 const state = {
   name: '张三',
+  muenList:'33',
   meunlsit:[],
   routeList:[]
 }
@@ -16,8 +17,8 @@ const mutations = {
   changeNameWithParam (state, payload) {
     state.name = payload.name
   },
-  changeMeun (state, payload) {
-    state.muenList = payload.name
+  changeMeun (state) {
+    state.muenList = 'awu'
   },
   setMeun (state,payload) {
     let bb = routerFun(payload)
@@ -30,9 +31,13 @@ const mutations = {
 }
 
 const actions = {
+  changeNameToZhangsan(context){
+    context.commit('changeMeun')
+  }
 }
 
 export default new Vuex.Store({
   state,
-  mutations
+  mutations,
+  actions
 })

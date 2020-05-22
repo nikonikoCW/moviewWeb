@@ -13,17 +13,17 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
+      name: '/',
       component: HelloWorld,
       meta: {
         title: 'HelloWorld',
-        roles: ['user', 'admin'],
+        roles: [],
         icon: 'el-icon-info'
       },
     },
     {
       path: '/shouye',
-      name: 'ShouYe',
+      name: '/ShouYe',
       meta: {
         title: 'ShouYe',
         icon: 'el-icon-info',
@@ -33,7 +33,7 @@ export default new Router({
     },
     {
       path: '/user',
-      name: 'User',
+      name: '/User',
       meta: {
         title: 'User',
         icon: 'el-icon-info',
@@ -52,29 +52,17 @@ export default new Router({
       },
       children: [{
         path: 'main',
-        name: 'Main',
+        name: '/sider/Main',
         component: Main,
         meta: {
           title: 'Main',
           roles: ['user', 'admin'],
           icon: 'el-icon-info'
-        },
-        children:[
-          {
-            path: 'index3',
-            name: 'Index3',
-            component: Index,
-            meta: {
-              title: 'Index3333',
-              roles: ['user', 'admin'],
-              icon: 'el-icon-info'
-            }
-          }
-        ]
+        }
       },
       {
         path: 'index',
-        name: 'Index',
+        name: '/sider/Index',
         component: Index,
         meta: {
           title: 'Index',

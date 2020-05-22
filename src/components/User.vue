@@ -5,11 +5,15 @@
       <span>我是:{{this.$store.state.name}}</span>
       </div>
       <div style="background:green" id="container">
-        <video-player class="video-player vjs-custom-skin"
+        <video-player class="video-player vjs-custom-skin shiyishi"
                 ref="videoPlayer"
                 :playsinline="true"
-                :options="playerOptions">
+                :options="playerOptions"
+                @play="onPlayerPlay($event)"
+                @pause="onPlayerPause($event)">
         </video-player>
+        <el-button @click="onPlayerPause2">stop</el-button>
+        <el-button @click="onPlayerPause3">start</el-button>
       </div>
     </div>
   </div>
@@ -47,7 +51,25 @@ export default {
           remainingTimeDisplay: false, // 是否显示剩余时间功能
           fullscreenToggle: true // 是否显示全屏按钮
         }
-      }
+      },
+      barrage_play:null
+    }
+  },
+  methods:{
+    onPlayerPlay(palyer){
+      this.barrage_play.play();
+    },
+    onPlayerPause(player){
+      this.barrage_play.pause();
+    },
+    onPlayerPause2(){
+      // debugger
+      // var video=document.getElementsByClassName("vjs-tech");
+      // video[0].pause()
+      this.barrage_play.pause();
+    },
+    onPlayerPause3(){
+      this.barrage_play.play();
     }
   },
   computed: {
@@ -57,7 +79,7 @@ export default {
   },
   mounted() {
     console.log(example)
-    const barrage = new Barrage({
+    this.barrage_play = new Barrage({
       container: document.getElementById('container'),
       data: example,
       config: {
@@ -65,14 +87,14 @@ export default {
         defaultColor: '#fff'
       }
     })
-    barrage.add({
+    this.barrage_play.add({
       key: 'fctc651a9pm2j20bia8j',
       time: 1000,
       text: '这是新增的一条弹幕',
       fontSize: 24,
       color: '#0ff'
     })
-    barrage.play()
+    // this.barrage_play.play()
   }
 }
 </script>
