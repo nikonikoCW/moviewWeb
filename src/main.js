@@ -12,7 +12,12 @@ import VideoPlayer from 'vue-video-player'
 require('video.js/dist/video-js.css')
 require('vue-video-player/src/custom-theme.css')
 Vue.use(VideoPlayer)
+import VueAwesomeSwiper from 'vue-awesome-swiper'
 
+// import style
+import 'swiper/css/swiper.css'
+
+Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false

@@ -30,7 +30,7 @@
         </el-menu>
       </el-col>
     </el-row>
-    <router-view></router-view>
+    <router-view style="width:calc(100% - 200px)"></router-view>
   </div>
 </template>
 <script>

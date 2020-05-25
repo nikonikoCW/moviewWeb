@@ -2,8 +2,9 @@
   <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
     <div>
       <div class="movie-title">
-      <span>我是:{{this.$store.state.name}}</span>
+      <span>当前用户:{{this.$store.state.name}}</span>
       </div>
+      <!-- 当前时长{{shichang_current}} -->
       <div style="background:green" id="container">
         <video-player class="video-player vjs-custom-skin shiyishi"
                 ref="videoPlayer"
@@ -12,8 +13,10 @@
                 @play="onPlayerPlay($event)"
                 @pause="onPlayerPause($event)">
         </video-player>
-        <el-button @click="onPlayerPause2">stop</el-button>
-        <el-button @click="onPlayerPause3">start</el-button>
+      </div>
+      <div style="width:100%;height:48px;display:flex;justify-content:space-between;align-items:center;margin-top:20px;">
+        <el-input style="width:640px" v-model="message_barrage"></el-input>
+        <el-button @click="SubmitBarrage" style="height:40px;width:120px;">发送</el-button>
       </div>
     </div>
   </div>
@@ -30,6 +33,18 @@ export default {
   name: 'User',
   data () {
     return {
+      message_barrage:'',
+      danmu_list:[
+        {
+        time: 500,
+        key:'123',
+        createdAt: '2019-01-13T13:34:47.126Z',
+        text: '陈伟。陈伟。陈伟。陈伟。陈伟。陈伟。陈伟。2222',
+        fontSize: 24,
+        color: '#0ff'
+      }
+      ],
+      danmu_num:0,
       playerOptions: {
         playbackRates: [0.5, 1.0, 1.5, 2.0], // 可选的播放速度
         autoplay: false, // 如果为true,浏览器准备好时开始回放。
@@ -52,30 +67,44 @@ export default {
           fullscreenToggle: true // 是否显示全屏按钮
         }
       },
-      barrage_play:null
+      barrage_play:null,
+      shichang_current:''
     }
   },
   methods:{
     onPlayerPlay(palyer){
+      debugger
       this.barrage_play.play();
     },
     onPlayerPause(player){
       this.barrage_play.pause();
     },
-    onPlayerPause2(){
-      // debugger
-      // var video=document.getElementsByClassName("vjs-tech");
-      // video[0].pause()
-      this.barrage_play.pause();
+    SubmitBarrage(){
+      debugger
+      let aa = document.getElementsByClassName('vjs-tech')
+      this.shichang_current = aa[0].currentTime
+      const result = this.barrage_play.add({
+        time:  this.shichang_current*1000,
+        text: this.message_barrage,
+      })
+      if(result){
+        this.$message({
+          message: '弹幕插入成功！',
+          type: 'success'
+        });
+        this.message_barrage = ''
+      }else{
+        this.$message({
+          message: '当前进度弹幕过于饱和，请择机再试 ~(o_o)~',
+          type: 'warning'
+        });
+      }
     },
-    onPlayerPause3(){
-      this.barrage_play.play();
-    }
   },
   computed: {
     player() {
       return this.$refs.videoPlayer.player
-    }
+    },
   },
   mounted() {
     console.log(example)
@@ -83,17 +112,18 @@ export default {
       container: document.getElementById('container'),
       data: example,
       config: {
-        duration: 20000,
+        duration: -1,
         defaultColor: '#fff'
       }
     })
-    this.barrage_play.add({
-      key: 'fctc651a9pm2j20bia8j',
-      time: 1000,
-      text: '这是新增的一条弹幕',
-      fontSize: 24,
-      color: '#0ff'
-    })
+    // this.barrage_play.add({
+    //   key: 'fctc651a9pm2j20bia8j',
+    //   time: 1000,
+    //   text: '这是新增的一条弹幕',
+    //   fontSize: 24,
+    //   color: '#0ff'
+    // })
+    console.log(this.barrage_play)
     // this.barrage_play.play()
   }
 }
