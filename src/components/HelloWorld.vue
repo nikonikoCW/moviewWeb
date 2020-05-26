@@ -24,7 +24,7 @@ export default {
       debugger
       if(this.username=='admin'||this.username=='user'){
         let getUserRole = this.username === 'admin' ? 'admin' : 'user'
-        localStorage.setItem('userRole', getUserRole)
+        sessionStorage .setItem('userRole', getUserRole)
         this.$router.push({
           path: '/sider'
         })
@@ -35,6 +35,7 @@ export default {
         this.$store.commit('setMeun',this.username)
         debugger
         console.log(this.$store.state.menuList)
+        console.log(sessionStorage.getItem('userRole'))
       }
     }
   }

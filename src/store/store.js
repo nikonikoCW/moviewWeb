@@ -7,7 +7,8 @@ const state = {
   name: '张三',
   muenList:'33',
   meunlsit:[],
-  routeList:[]
+  routeList:[],
+  roles:sessionStorage.getItem("userRole")
 }
 
 const mutations = {
@@ -21,7 +22,8 @@ const mutations = {
     state.muenList = 'awu'
   },
   setMeun (state,payload) {
-    let bb = routerFun(payload)
+    console.log('123123123')
+    let bb = routerFun(state.roles)
     state.routeList = bb.routeList
     this.commit('INIT_MENU', bb.menuList)
   },

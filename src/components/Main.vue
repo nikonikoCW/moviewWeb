@@ -18,7 +18,7 @@ export default {
     }
   },
   mounted () {
-    let roles = localStorage.getItem('userRole')
+    let roles = sessionStorage.getItem('userRole')
     console.log(roles)
   },
   methods: {

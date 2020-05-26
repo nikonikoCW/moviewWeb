@@ -1,22 +1,25 @@
 <template>
-  <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
-    <div>
-      <div class="movie-title">
-      <span>当前用户:{{this.$store.state.name}}</span>
-      </div>
-      <!-- 当前时长{{shichang_current}} -->
-      <div style="background:green" id="container">
-        <video-player class="video-player vjs-custom-skin shiyishi"
-                ref="videoPlayer"
-                :playsinline="true"
-                :options="playerOptions"
-                @play="onPlayerPlay($event)"
-                @pause="onPlayerPause($event)">
-        </video-player>
-      </div>
-      <div style="width:100%;height:48px;display:flex;justify-content:space-between;align-items:center;margin-top:20px;">
-        <el-input style="width:640px" v-model="message_barrage"></el-input>
-        <el-button @click="SubmitBarrage" style="height:40px;width:120px;">发送</el-button>
+  <div style="width:100%;height:100%;">
+    <!-- <index style="height:500px;"/> -->
+    <div style="display:flex;align-items:center;justify-content:center;width:100%;height:calc(100%)">
+      <div>
+        <div class="movie-title">
+        <span>当前用户:{{this.$store.state.name}}</span>
+        </div>
+        <!-- 当前时长{{shichang_current}} -->
+        <div style="background:green" id="container">
+          <video-player class="video-player vjs-custom-skin shiyishi"
+                  ref="videoPlayer"
+                  :playsinline="true"
+                  :options="playerOptions"
+                  @play="onPlayerPlay($event)"
+                  @pause="onPlayerPause($event)">
+          </video-player>
+        </div>
+        <div style="width:100%;height:48px;display:flex;justify-content:space-between;align-items:center;margin-top:20px;">
+          <el-input style="width:640px" v-model="message_barrage"></el-input>
+          <el-button @click="SubmitBarrage" style="height:40px;width:120px;">发送</el-button>
+        </div>
       </div>
     </div>
   </div>
@@ -26,9 +29,10 @@ import Barrage from 'barrage-ui'
 import example from 'barrage-ui/example.json'
 import { videoPlayer } from 'vue-video-player'
 import 'video.js/dist/video-js.css'
+import Index from './Index'
 export default {
   components: {
-    videoPlayer
+    videoPlayer,Index
   },
   name: 'User',
   data () {

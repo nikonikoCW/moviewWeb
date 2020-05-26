@@ -17,6 +17,10 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 // import style
 import 'swiper/css/swiper.css'
 
+const refresh = () => {
+  store.commit('setMeun')
+}
+refresh()
 Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
 Vue.use(ElementUI)
 
@@ -45,6 +49,7 @@ Vue.config.productionTip = false
 //   console.log(store.state.meunlsit)
 // })
 /* eslint-disable no-new */
+
 new Vue({
   el: '#app',
   router,

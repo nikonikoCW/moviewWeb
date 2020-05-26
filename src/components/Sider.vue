@@ -66,7 +66,7 @@ export default {
   },
   mounted () {
     this.meuns = this.routes
-    console.log(this.meuns)
+    console.log('menuList:'+this.menuList)
   },
   computed: {
     ...mapState({ menuList: state => state.menuList })

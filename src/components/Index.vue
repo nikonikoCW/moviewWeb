@@ -5,7 +5,11 @@
       <swiper-slide>Slide 1</swiper-slide>
       <swiper-slide>Slide 2</swiper-slide>
       <swiper-slide>Slide 3</swiper-slide>
-      <swiper-slide>Slide 4</swiper-slide>
+      <swiper-slide>
+        <div style="width:100%;height:100%;background:Red;">
+          <img src="/static/images/123.jpg" alt="" style="width:100%;height:100%;">
+        </div>
+      </swiper-slide>
       <swiper-slide>Slide 5</swiper-slide>
       <swiper-slide>Slide 6</swiper-slide>
       <swiper-slide>Slide 7</swiper-slide>
@@ -32,10 +36,13 @@ export default {
           centeredSlides: true,
           slidesPerView: 'auto',
           coverflowEffect: {
-            rotate: 50,
+            rotate: 30,
             stretch: 0,
             depth: 100,
             modifier: 1,
+            autoplay:true,
+            speed:2000,
+            loop: true,
             slideShadows : true
           },
           pagination: {
