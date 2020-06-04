@@ -14,6 +14,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "barrage-ui": "^1.4.0",
     "element-ui": "^2.13.0",
     "node-sass": "^4.14.1",

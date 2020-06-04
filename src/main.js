@@ -13,10 +13,9 @@ require('video.js/dist/video-js.css')
 require('vue-video-player/src/custom-theme.css')
 Vue.use(VideoPlayer)
 import VueAwesomeSwiper from 'vue-awesome-swiper'
-
 // import style
 import 'swiper/css/swiper.css'
-
+//刷新调用store里面的action
 const refresh = () => {
   store.commit('setMeun')
 }

@@ -21,9 +21,12 @@ const mutations = {
   changeMeun (state) {
     state.muenList = 'awu'
   },
+  checkRoles(state,payload){},
   setMeun (state,payload) {
+    debugger
     console.log('123123123')
-    let bb = routerFun(state.roles)
+    let now_roles = sessionStorage.getItem("userRole")
+    let bb = routerFun(now_roles)
     state.routeList = bb.routeList
     this.commit('INIT_MENU', bb.menuList)
   },

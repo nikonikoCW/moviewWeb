@@ -1,36 +1,40 @@
 <template>
-  <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:flex-start;">
-    <el-row class="tac">
-      <el-col :span="12">
-        <el-menu
-          default-active="2"
-          class="el-menu-vertical-demo"
-          @open="handleOpen"
-          @close="handleClose"
-          background-color="#545c64"
-          text-color="#fff"
-          active-text-color="#ffd04b">
-          <el-menu-item index="3" @click="addRouteshouye">
-            <i class="el-icon-document"></i>
-            <span slot="title">shouye</span>
-          </el-menu-item>
-          <el-submenu index="1">
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>sider</span>
-            </template>
-              <el-menu-item index="1-1" @click="addRoutes1">首页</el-menu-item>
-              <el-menu-item index="1-2" @click="addRoutes2">Index</el-menu-item>
-          </el-submenu>
-        </el-menu>
-      </el-col>
-      <el-col :span="12">
-        <el-menu background-color="#132347" text-color="#bfcbd9" active-text-color="#ffd04b" router unique-opened>
-            <sidebar-item :menu="menuList" />
-        </el-menu>
-      </el-col>
-    </el-row>
-    <router-view style="width:calc(100% - 200px)"></router-view>
+  <div style="width:100%;height:100%;position:relative;">
+    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:flex-start;position:absolute;">
+      <el-row class="tac">
+        <!-- <el-col :span="12">
+          <el-menu
+            default-active="2"
+            class="el-menu-vertical-demo"
+            @open="handleOpen"
+            @close="handleClose"
+            background-color="#545c64"
+            text-color="#fff"
+            active-text-color="#ffd04b">
+            <el-menu-item index="3" @click="addRouteshouye">
+              <i class="el-icon-document"></i>
+              <span slot="title">shouye</span>
+            </el-menu-item>
+            <el-submenu index="1">
+              <template slot="title">
+                <i class="el-icon-location"></i>
+                <span>sider</span>
+              </template>
+                <el-menu-item index="1-1" @click="addRoutes1">首页</el-menu-item>
+                <el-menu-item index="1-2" @click="addRoutes2">Index</el-menu-item>
+            </el-submenu>
+          </el-menu>
+        </el-col> -->
+        <el-col :span="12">
+          <el-menu background-color="#132347" text-color="#bfcbd9" active-text-color="#ffd04b" router unique-opened>
+              <sidebar-item :menu="menuList" />
+          </el-menu>
+        </el-col>
+      </el-row>
+      <router-view style="width:calc(100% - 200px)"></router-view>
+      
+    </div>
+    <div style="position:absolute;right:20px;top:20px;" @click="quit"><span class="el-icon-user-solid"></span></div>
   </div>
 </template>
 <script>
@@ -45,6 +49,12 @@ export default {
     }
   },
   methods: {
+    quit(){
+      sessionStorage.clear()
+      this.$router.push({
+          path: '/',
+        })
+    },
     addRoutes1 () {
       this.$router.push('/sider/main')
     },

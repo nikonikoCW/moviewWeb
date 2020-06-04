@@ -24,7 +24,7 @@ export default {
       debugger
       if(this.username=='admin'||this.username=='user'){
         let getUserRole = this.username === 'admin' ? 'admin' : 'user'
-        sessionStorage .setItem('userRole', getUserRole)
+        sessionStorage.setItem('userRole', getUserRole)
         this.$router.push({
           path: '/sider'
         })
